@@ -55,7 +55,7 @@ public class EstacionRutaServiceTest {
 
 	private void insertData() {
 
-		EstacionEntity estacion = factory.manufacturePojo(EstacionEntity.class);
+		estacion = factory.manufacturePojo(EstacionEntity.class);
 		entityManager.persist(estacion);
 
 		for (int i = 0; i < 3; i++) {
@@ -94,7 +94,7 @@ public class EstacionRutaServiceTest {
 			RutaEntity nuevaRuta1 = factory.manufacturePojo(RutaEntity.class);
 			nuevaRuta1.setTipo("Nocturna");
 			entityManager.persist(nuevaRuta1);
-			
+
 			rutaList.add(nuevaRuta1);
 			estacion.setRutas(rutaList);
 			estacionRutaService.removeEstacionRuta(estacion.getId(), nuevaRuta1.getId());
@@ -106,10 +106,9 @@ public class EstacionRutaServiceTest {
 	@Test
 	void addEstacionRuta() throws EntityNotFoundException, IllegalOperationException {
 		RutaEntity nuevaRuta = factory.manufacturePojo(RutaEntity.class);
-
+		
 		RutaEntity rutaEntity = estacionRutaService.addEstacionRuta(estacion.getId(), nuevaRuta.getId());
 		assertNotNull(rutaEntity);
-
 		assertEquals(rutaEntity.getId(), nuevaRuta.getId());
 		assertEquals(rutaEntity.getNombre(), nuevaRuta.getNombre());
 		assertEquals(rutaEntity.getColor(), nuevaRuta.getColor());

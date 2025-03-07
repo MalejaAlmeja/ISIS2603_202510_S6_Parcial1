@@ -94,9 +94,9 @@ public class EstacionRutaServiceTest {
 			RutaEntity nuevaRuta1 = factory.manufacturePojo(RutaEntity.class);
 			nuevaRuta1.setTipo("Nocturna");
 			entityManager.persist(nuevaRuta1);
-
-			rutaList.add(nuevaRuta1);
-			estacion.setRutas(rutaList);
+			List<RutaEntity> listanueva = new ArrayList<>();
+			listanueva.add(nuevaRuta1);
+			estacion.setRutas(listanueva);
 			estacionRutaService.removeEstacionRuta(estacion.getId(), nuevaRuta1.getId());
 		});
 		
